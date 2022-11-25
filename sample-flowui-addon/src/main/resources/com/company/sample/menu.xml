@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<menu-config xmlns="http://jmix.io/schema/ui/menu">
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
-    <menu id="sample" caption="msg://com.company.sample/menu.addon" insertAfter="administration">
+    <menu id="sample" title="msg://com.company.sample/menu.addon">
+        <item id="sample_HelloWorldView" title="msg://com.company.sample.view.helloworld/helloWorldView.title"/>
     </menu>
 
 </menu-config>

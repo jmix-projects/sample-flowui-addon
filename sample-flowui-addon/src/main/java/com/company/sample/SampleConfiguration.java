@@ -3,8 +3,8 @@ package com.company.sample;
 import io.jmix.core.annotation.JmixModule;
 import io.jmix.core.impl.scanning.AnnotationScanMetadataReaderFactory;
 import io.jmix.eclipselink.EclipselinkConfiguration;
-import io.jmix.ui.UiConfiguration;
-import io.jmix.ui.sys.UiControllersConfiguration;
+import io.jmix.flowui.FlowuiConfiguration;
+import io.jmix.flowui.sys.ViewControllersConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -17,16 +17,16 @@ import java.util.Collections;
 @Configuration
 @ComponentScan
 @ConfigurationPropertiesScan
-@JmixModule(dependsOn = {EclipselinkConfiguration.class, UiConfiguration.class})
+@JmixModule(dependsOn = {EclipselinkConfiguration.class, FlowuiConfiguration.class})
 @PropertySource(name = "com.company.sample", value = "classpath:/com/company/sample/module.properties")
 public class SampleConfiguration {
 
-    @Bean("sample_SampleUiControllers")
-    public UiControllersConfiguration screens(ApplicationContext applicationContext,
+    @Bean("sample_SecurityViewControllers")
+    public ViewControllersConfiguration views(ApplicationContext applicationContext,
                                               AnnotationScanMetadataReaderFactory metadataReaderFactory) {
-        UiControllersConfiguration uiControllers
-                = new UiControllersConfiguration(applicationContext, metadataReaderFactory);
-        uiControllers.setBasePackages(Collections.singletonList("com.company.sample"));
-        return uiControllers;
+        ViewControllersConfiguration viewControllers
+                = new ViewControllersConfiguration(applicationContext, metadataReaderFactory);
+        viewControllers.setBasePackages(Collections.singletonList("com.company.sample"));
+        return viewControllers;
     }
 }
